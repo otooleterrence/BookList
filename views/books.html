@@ -1,0 +1,16 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+<h3>Books</h3>
+
+<hr>
+<ul class="list-unstyled">
+  <!-- PLACEHOLDER LIST OF PAGES -->
+  {% for book in books %}
+    <li>
+      <a href="{{ book.link }}">{{ book.title }}, {{ book.rating }} stars</a>
+    </li>
+  {% endfor %}
+</ul>
+{% endblock %}

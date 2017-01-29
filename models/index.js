@@ -47,10 +47,10 @@ const Authors = db.define('authors', {
   }
 }, {
   getterMethods: {
-    name: () => {
+    name: function () {
       return this.first_name + ' ' + this.last_name;
     },
-    name_lf: () => {
+    name_lf: function () {
       return this.last_name + ', ' + this.first_name;
     }
   }

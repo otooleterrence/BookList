@@ -2,17 +2,24 @@
 
 // const routes = {};
 const routes = require('express').Router();
+const db = require('../models');
 
 routes.get('/authors', function (req, res) {
-  res.send('this is a list of authors');
+  db.Authors.findAll()
+  .then( ( authors ) => {
+    res.render('authors.html', {authors});
+  });
 });
 
 routes.get('/books', function (req, res) {
-  res.send('this is a list of books');
+  db.Books.findAll()
+  .then( ( books ) => {
+    res.render('books.html', {books});
+  });
 });
 
 routes.get('/', function (req, res) {
-  res.send('Welcome to the book site.');
+  res.redirect('/books');
 });
 
 module.exports = routes;

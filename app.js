@@ -4,6 +4,7 @@
 const express = require('express');
 const volleyball = require('volleyball');
 const bodyParser = require('body-parser');
+const nunjucks = require('nunjucks');
 
 //my requires-in
 const routes = require('./routes/index');
@@ -16,6 +17,12 @@ const Authors = db.Authors;
 
 //HTML INDEX AND RENDER SETUP,
 //probably with nunjuck, but maybe I'll try getting into react
+nunjucks.configure('views', { noCache: true });
+app.engine('html', nunjucks.render);
+app.set('view engine', 'html');
+
+app.use(express.static('./public'));
+
 
 //setup middlwear
 app.use(volleyball);
